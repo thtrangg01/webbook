@@ -1,0 +1,522 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
+    />
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <title>Book for your soul</title>
+  </head>
+
+  <body>
+    <div class="main">
+      <header class="header">
+        <div class="grid">
+          <nav class="header_navbar">
+            <ul class="header_navbar-list">
+              <li class="header_navbar-iem">
+                <a href="" class="header_navbar-icon-link">
+                  <i class="fas fa-book"></i>
+                </a>
+                <a href="" class="header_navbar-iem-link"> Trang chủ </a>
+              </li>
+            </ul>
+
+            <div class="header_search">
+              <input
+                type="text"
+                class="header_search-input"
+                placeholder="Tìm kiếm"
+              />
+              <button class="header_search-btn">
+                <i class="header_search-btn-icon fas fa-search"></i>
+              </button>
+            </div>
+
+            <ul class="header_navbar-list">
+              <li class="header_navbar-iem">
+                <a href="" class="header_navbar-iem-link">
+                  <i class="header_navbar-icon-link far fa-bell"></i>
+                  Thông báo
+                </a>
+              </li>
+              <li class="header_navbar-iem">
+                <i class="header_navbar-icon-link fas fa-shopping-cart"></i>
+                Giỏ hàng
+              </li>
+              <li class="header_navbar-iem header_navbar-iem--strong">
+                <button
+                  id="login"
+                  type="button"
+                  class="header_navbar-btn_login"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modal-login"
+                >
+                  <span id="user-display">Đăng Nhập</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <div class="modal d-block1" id="modal-login" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content shadow">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="firebaseui-auth-container" class="guest"></div>
+                        <div id="user-signed-in" class="d-none d-flex user">
+                            <div class="flex-grow-1 d-flex justify-content-center">
+                                <img  src="imgbook/logo.svg" width="110px" height="110px" class="avatar rounded-circle">
+                            </div>
+                            <div class="flex-grow-1  d-flex flex-column align-self-center me-4">
+                                <div id="name" class="align-self-center text-primary fs-5">Name</div>
+                                <div id="email" class="align-self-center ">Email</div>
+                                <div id="phone">Phone</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-none user">
+                        <button id="sign-out" type="button" class="btn btn-danger" onclick="firebase.auth().signOut();">Sign out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </header>
+
+      <div class="carousel">
+        <div id="carousel-id" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-id" data-slide-to="0" class=""></li>
+            <li data-target="#carousel-id" data-slide-to="1" class=""></li>
+            <li
+              data-target="#carousel-id"
+              data-slide-to="2"
+              class="active"
+            ></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item active">
+              <img
+                src="imgbook/sach1.jpg"
+                class="d-block w-100 img-fluid"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Chuyện đọc sách</h5>
+                <p>
+                  Đọc sách, giống như kết bạn với một người thầy, một người bạn
+                  tốt, nó mang lại rất nhiều lợi ích cho ta, mỗi một câu nói
+                  trong sách đều có thể thức tỉnh những người đang mơ hồ, giúp
+                  con người ta trở nên khai thông, giác ngộ được nhiều điều, sự
+                  nghiệp cũng theo đó mà bước lên một tầm cao hơn.
+                </p>
+              </div>
+            </div>
+            <div class="item">
+              <img
+                src="imgbook/sach2.jpg"
+                class="d-block w-100 img-fluid"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Tâm sự nhỏ</h5>
+                <p>
+                  Câu chuyện khởi nghiệp với niềm đam mê của cô sinh viên mới ra
+                  trường
+                </p>
+              </div>
+            </div>
+            <div class="item">
+              <img
+                src="imgbook/sach3.jpg"
+                class="d-block w-100 img-fluid"
+                alt="..."
+              />
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Bạn và tôi</h5>
+                <p>Những câu chuyện về những người bạn xung quanh mình.</p>
+              </div>
+            </div>
+          </div>
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleCaptions"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleCaptions"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <a class="left carousel-control" href="#carousel-id" data-slide="prev"
+          ><span class="glyphicon glyphicon-chevron-left"></span
+        ></a>
+        <a class="right carousel-control" href="#carousel-id" data-slide="next"
+          ><span class="glyphicon glyphicon-chevron-right"></span
+        ></a>
+      </div>
+
+      <div class="app_container">
+        <div class="grid">
+          <div class="grid_row app_content">
+            <div class="grid_column-4">
+              <nav class="category">
+                <h3 class="category_heading">
+                  <i class="category_heading-icon far fa-list-alt"></i>
+                  Thể loại
+                </h3>
+
+                <ul class="category-list">
+                  <li class="category-item category-item--active">
+                    <a href="#" class="category-item_link"> Sách Tiếng Việt</a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link"> Thiếu nhi </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link">
+                      Giáo khoa - tham khảo</a
+                    >
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link"> Văn học </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link">
+                      Tâm lý - Kĩ năng sống
+                    </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link"> Manga - Comic</a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link">
+                      Khoa học kĩ thuật</a
+                    >
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link"> Khác </a>
+                  </li>
+
+                  <li class="category-item category-item--active">
+                    <a href="#" class="category-item_link"> Foreign Books</a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link">
+                      Children's books
+                    </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link">
+                      Dictionaries & Languages
+                    </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link"> Fiction </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link">
+                      Business, Finance & Management
+                    </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link">
+                      Personal Development
+                    </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link"> Biography </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link">
+                      Society & Sciences
+                    </a>
+                  </li>
+
+                  <li class="category-item">
+                    <a href="#" class="category-item_link"> Others </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <div class="grid_column-8">
+              <div class="home-product">
+                <div class="grid_row">
+                  <div class="grid_column-2">
+                    <a class="home-product-item" href="#">
+                      <div
+                        class="home-product-item_img"
+                        style="
+                          background-image: url(https://cdn0.fahasa.com/media/flashmagazine/images/page_images/luoc_su_the_gioi/2021_07_28_17_40_17_1-390x510.jpg);
+                        "
+                      >
+                        <!-- <img src="imgbook/book1.jpg" alt="" width="100%" /> -->
+                      </div>
+                      <h4 class="home-product-item_name">Lược sử thế giới</h4>
+                      <div class="home-product-item_price">
+                        <span class="home-product-item_price-giabia"
+                          >320.000đ</span
+                        >
+                        <span class="home-product-item_price-giaban"
+                          >272.000đ</span
+                        >
+                      </div>
+                      <div class="home-product-item_action">
+                        <span
+                          class="
+                            home-product-item_like home-product-item_like--liked
+                          "
+                        >
+                          <i
+                            class="
+                              home-product-item_like-icon-fill
+                              fas
+                              fa-thumbs-up
+                            "
+                          ></i>
+                          <i
+                            class="
+                              home-product-item_like-icon-empty
+                              far
+                              fa-thumbs-up
+                            "
+                          ></i>
+                        </span>
+                        <div class="home-product-item_rating">
+                          <i
+                            class="home-product-item_star-gold fas fa-star"
+                          ></i>
+                          <i
+                            class="home-product-item_star-gold fas fa-star"
+                          ></i>
+                          <i
+                            class="home-product-item_star-gold fas fa-star"
+                          ></i>
+                          <i
+                            class="home-product-item_star-gold fas fa-star"
+                          ></i>
+                          <i
+                            class="home-product-item_star-gold fas fa-star"
+                          ></i>
+                        </div>
+                        <span class="home-product-item_sold">100 đã bán</span>
+                      </div>
+
+                      <div class="home-product-item_origin">
+                        <span class="home-product-item_author"
+                          >E H Gombrich</span
+                        >
+                      </div>
+
+                      <div class="home-product-item_sale-off">
+                        <span class="home-product-item_sale-off-percent"
+                          >-15%</span
+                        >
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <ul class="pagination home-product_pagination">
+                <li class="pagination-item">
+                  <a href="#" class="pagination-item_link">
+                    <i class="pagination-item_icon fas fa-angle-left"></i>
+                  </a>
+                </li>
+
+                <li class="pagination-item">
+                  <a
+                    href=""
+                    class="pagination-item_link pagination-item--active"
+                  >
+                    1
+                  </a>
+                </li>
+
+                <li class="pagination-item">
+                  <a href="" class="pagination-item_link"> 2 </a>
+                </li>
+
+                <li class="pagination-item">
+                  <a href="" class="pagination-item_link"> 3 </a>
+                </li>
+
+                <li class="pagination-item">
+                  <a href="" class="pagination-item_link"> 4 </a>
+                </li>
+
+                <li class="pagination-item">
+                  <a href="" class="pagination-item_link"> 5 </a>
+                </li>
+
+                <li class="pagination-item">
+                  <a href="" class="pagination-item_link"> ... </a>
+                </li>
+
+                <li class="pagination-item">
+                  <a href="" class="pagination-item_link"> 14 </a>
+                </li>
+
+                <li class="pagination-item">
+                  <a href="" class="pagination-item_link">
+                    <i class="pagination-item_icon fas fa-angle-right"></i>
+                  </a>
+                </li>
+              </ul> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="grid">
+          <div class="grid_row">
+            <div class="grid_column-4" id="footer-introduction">
+              <h3 class="footer_heading">Giới thiệu</h3>
+              <ul class="footer-list">
+                <li class="footer-item">
+                  <p class="footer-item-intro">
+                    Thtrangg ~ Công nghệ thông tin 61B <br />
+                    Trường Đại học Kinh tế Quốc dân <br />
+                    207 Giải Phóng, Đồng Tâm, Hai Bà Trưng, Hà Nội <br />
+                    An Bình, Thuận Thành, Bắc Ninh
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="grid_column-4">
+              <h3 class="footer_heading">Chăm sóc khách hàng</h3>
+              <ul class="footer-list">
+                <li class="footer-item">
+                  <a href="" class="footer-item_link"> Điều khoản sử dụng</a>
+                </li>
+                <li class="footer-item">
+                  <a href="" class="footer-item_link"> Hướng dẫn đặt hàng</a>
+                </li>
+                <li class="footer-item">
+                  <a href="" class="footer-item_link">
+                    Chính sách đổi - trả - hoàn tiền</a
+                  >
+                </li>
+                <li class="footer-item">
+                  <a href="" class="footer-item_link">
+                    Phương thức vận chuyển</a
+                  >
+                </li>
+                <li class="footer-item">
+                  <a href="" class="footer-item_link">
+                    Phương thức thanh toán và xuất hóa đơn</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="grid_column-4">
+              <h3 class="footer_heading">Theo dõi</h3>
+              <ul class="footer-list">
+                <li class="footer-item">
+                  <a href="" class="footer-item_link">
+                    <i class="footer-item_icon fab fa-facebook"></i>
+                    Facebook
+                  </a>
+                </li>
+                <li class="footer-item">
+                  <a href="" class="footer-item_link">
+                    <i class="footer-item_icon fab fa-instagram"></i>
+                    Instagram
+                  </a>
+                </li>
+                <li class="footer-item">
+                  <a href="" class="footer-item_link">
+                    <i class="footer-item_icon fab fa-youtube"></i>
+                    Youtube
+                  </a>
+                </li>
+                <li class="footer-item">
+                  <a href="" class="footer-item_link">
+                    <i class="footer-item_icon fab fa-twitter"></i>
+                    Twitter
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer_bottom">
+          <div class="grid">
+            <p class="footer_text">© 2021 - Owned by thtrangg</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script src="./func.js"></script>
+  </body>
+</html>
