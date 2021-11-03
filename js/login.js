@@ -7,6 +7,9 @@ window.onclick = function (event) {
   }
 };
 
+// alert("hi");
+var user;
+
 $().ready(function () {
   // đăng nhập
   $("#login-modal-btn_login").on("click", function () {
@@ -24,6 +27,11 @@ function handleLoginClick() {
   let username = $("#login_username").val();
   let password = $("#login_password").val();
 
+  // validate
+  if (!validateLogin()) {
+    return;
+  }
+
   // call API
   let url = API_URI + "/login";
   let authorization = "Basic " + btoa(username + ":" + password);
@@ -34,7 +42,11 @@ function handleLoginClick() {
       xhr.setRequestHeader("Authorization", authorization);
     },
     success: function (data, textStatus, xhr) {
-      alert(data);
+      console.log(data);
+      localStorage.setItem("authorization", authorization);
+      localStorage.setItem("user", data);
+      user = data;
+      closeLoginModal();
     },
     error(jqXHR, textStatus, errorThrown) {
       alert("Sai tên đăng nhập hoặc mật khẩu");
@@ -44,12 +56,12 @@ function handleLoginClick() {
 
 function handleRegisterClick() {
   // lấy dữ liệu từ form đăng ký
-  let fullname = $("register_fullname").val();
-  let email = $("register_email").val();
-  let phoneNumber = $("register_phoneNumber").val();
-  let address = $("register_address").val();
-  let username = $("register_username").val();
-  let password = $("register_password").val();
+  let fullname = $("#register_fullname").val();
+  let email = $("#register_email").val();
+  let phoneNumber = $("#register_phoneNumber").val();
+  let address = $("#register_address").val();
+  let username = $("#register_username").val();
+  let password = $("#register_password").val();
 
   let registerForm = {
     fullname: fullname,
@@ -60,4 +72,72 @@ function handleRegisterClick() {
     password: password,
   };
   console.log(registerForm);
+
+  // validate
+  if (!validateRegister()) {
+    return;
+  }
+
+  // call API
+  let url = API_URI + "/register";
+  let authorization = "Basic " + btoa(username + ":" + password);
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: JSON.stringify(registerForm),
+    contentType: "aplication/json",
+    success: function (data, textStatus, xhr) {
+      console.log(data);
+      user = data;
+      localStorage.setItem("authorization", authorization);
+      localStorage.setItem("user", data);
+      alert("Đăng ký thành công");
+      document.getElementById("id02").style.display = "none";
+    },
+    error(jqXHR, textStatus, errorThrown) {
+      alert("Thông tin đã tồn tại");
+    },
+  });
+}
+
+function validateLogin() {
+  let username = $("#login_username").val();
+  let password = $("#login_password").val();
+
+  if (!username || !password) {
+    alert("Nhập thiếu thông tin");
+    return false;
+  }
+
+  return true;
+}
+
+function validateRegister() {
+  let fullname = $("#register_fullname").val();
+  let email = $("#register_email").val();
+  let phoneNumber = $("#register_phoneNumber").val();
+  let address = $("#register_address").val();
+  let username = $("#register_username").val();
+  let password = $("#register_password").val();
+
+  if (
+    !fullname ||
+    !email ||
+    !phoneNumber ||
+    !address ||
+    !username ||
+    !password
+  ) {
+    alert("Không được để trống thông tin");
+    return false;
+  }
+  return true;
+}
+
+function closeRegisterModal() {
+  document.getElementById("id02").style.display = "none";
+}
+
+function closeLoginModal() {
+  document.getElementById("id01").style.display = "none";
 }
