@@ -13,7 +13,7 @@ input[type=password] {
 }
 
 /* dang ky */
-#login-modal-btn_register {
+.login-modal-btn_register {
     background-color: rgb(233, 92, 41);
     color: white;
     height: 35px;
@@ -36,7 +36,7 @@ input[type=password] {
     text-align: center;
 }
 
-#login-modal-btn_login {
+.login-modal-btn_login {
     background-color: rgb(233, 92, 41);
     color: white;
     height: 35px;

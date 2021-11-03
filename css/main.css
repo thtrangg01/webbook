@@ -359,6 +359,11 @@ i.home-product-item_like-icon-fill {
 .home-product-item_author {
     font-size: 1.4rem;
     color: #535353;
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
 .home-product-item_sale-off {
