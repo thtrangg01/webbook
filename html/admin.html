@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Board</title>
+
+    <link rel="stylesheet" href="../css/admin.css" />
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body class="home">
+    <div class="container-fluid display-table">
+      <div class="row display-table-row">
+        <div
+          class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box"
+          id="navigation"
+        >
+          <div class="navi">
+            <ul>
+              <li class="active">
+                <a href="#"
+                  ><i class="fa fa-book" aria-hidden="true"></i
+                  ><span class="hidden-xs hidden-sm">Book</span></a
+                >
+              </li>
+
+              <li>
+                <a href="#"
+                  ><i class="fa fa-user" aria-hidden="true"></i
+                  ><span class="hidden-xs hidden-sm">User</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-10 col-sm-11 display-table-cell v-align">
+          <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
+          <div class="row">
+            <header>
+              <div class="col-md-7">
+                <nav class="navbar-default pull-left">
+                  <div class="navbar-header">
+                    <button
+                      type="button"
+                      class="navbar-toggle collapsed"
+                      data-toggle="offcanvas"
+                      data-target="#side-menu"
+                      aria-expanded="false"
+                    >
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                  </div>
+                </nav>
+              </div>
+              <div class="col-md-5">
+                <div class="header-rightside">
+                  <ul class="list-inline header-top pull-right">
+                    <li class="hidden-xs">
+                      <a
+                        href="#"
+                        class="add-project"
+                        data-toggle="modal"
+                        data-target="#add_project"
+                        >Thêm Sách</a
+                      >
+                    </li>
+
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        ><i class="fa fa-user" aria-hidden="true"></i>
+                        <b class="caret"></b
+                      ></a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <div class="navbar-content">
+                            <span>JS Krishna</span>
+                            <p class="text-muted small">me@jskrishna.com</p>
+                            <div class="divider"></div>
+                            <a href="#" class="view btn-sm active"
+                              >View Profile</a
+                            >
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </header>
+          </div>
+          <div class="user-dashboard table-responsive">
+            <div class="container">
+              <h2>Sản phẩm</h2>
+              <input
+                class="form-control"
+                id="myInput"
+                type="text"
+                placeholder="Tìm kiếm ..."
+              />
+              <br />
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Mã Sách</th>
+                    <th>Thể Loại</th>
+                    <th>Ảnh</th>
+                    <th>Tên Sách</th>
+                    <th>Tác Giả</th>
+                    <th>Nhà Xuất Bản</th>
+                    <th>Giá Bìa</th>
+                    <th>Giá Bán</th>
+                    <th>Năm Xuất Bản</th>
+                    <th>Xóa</th>
+                    <th>Sửa</th>
+                  </tr>
+                </thead>
+                <tbody id="myTable">
+                  <tr>
+                    <td>1</td>
+                    <td>TL</td>
+                    <td>a.jpg</td>
+                    <td>ten sach</td>
+                    <td>tac gia</td>
+                    <td>nxb</td>
+                    <td>10000</td>
+                    <td>2000</td>
+                    <td>2021</td>
+                    <td><button class="btn btn-danger">Xóa</button></td>
+                    <td><button class="btn btn-success">Sửa</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="add_project" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header login-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h4 class="modal-title">Thêm sách</h4>
+          </div>
+          <div class="modal-body" id="modal-body">
+            <p>Tên Sách</p>
+            <input type="text" placeholder="Tên Sách" id="book-name" />
+
+            <p>Link Sách</p>
+            <input type="text" placeholder="Link Ảnh" id="book-img" />
+
+            <p>Giá Bìa</p>
+            <input type="text" placeholder="Giá Bìa" id="book-oldPrice" />
+
+            <p>Giá Bán</p>
+            <input type="text" placeholder="Giá Bán" id="book-newPrice" />
+
+            <p>Năm Xuất Bản</p>
+            <input type="text" placeholder="Năm Xuất Bản" id="book-year" />
+
+            <p>Tác Giả</p>
+            <select class="form-control" name="" id="book-select-author">
+              <option value="0">--- Chọn Tác Giả ---</option>
+            </select>
+
+            <p>Thể Loại</p>
+            <select class="form-control" name="" id="book-select-category">
+              <option value="0">--- Chọn Thể Loại ---</option>
+            </select>
+
+            <p>Nhà Xuất Bản</p>
+            <select class="form-control" name="" id="book-select-publisher">
+              <option value="0">--- Chọn Nhà Xuất Bản ---</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="cancel" data-dismiss="modal">
+              Thoát
+            </button>
+            <button type="button" class="add-project" data-dismiss="modal">
+              Lưu
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="../js/admin.js"></script>
+</html>

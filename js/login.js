@@ -44,9 +44,14 @@ function handleLoginClick() {
     success: function (data, textStatus, xhr) {
       console.log(data);
       localStorage.setItem("authorization", authorization);
-      localStorage.setItem("user", data);
+      localStorage.setItem("user", JSON.stringify(data));
       user = data;
       closeLoginModal();
+
+      if (user.admin) {
+        window.location.replace("./html/admin.html");
+      }
+      //
     },
     error(jqXHR, textStatus, errorThrown) {
       alert("Sai tên đăng nhập hoặc mật khẩu");
