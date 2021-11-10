@@ -29,6 +29,15 @@ $(document).ready(function () {
   getPublisherFromAPI();
 });
 
+// add handle click
+$(document).ready(function () {
+  $("#add-book").click(function () {
+    // alert("click luu");
+    sendCreateBook();
+    getBooksFromAPI();
+  });
+});
+
 // function API
 function getBooksFromAPI() {
   let url = API_URI + "/book";
@@ -104,9 +113,79 @@ function getCategoryFromAPI() {
   });
 }
 
-function sendCreateBook() {}
+function sendCreateBook() {
+  // get data from form
+  let book_name = $("#book-name").val();
+  let book_img = $("#book-img").val();
+  let book_oldPrice = $("#book-oldPrice").val();
+  let book_newPrice = $("#book-newPrice").val();
+  let book_year = $("#book-year").val();
+  let book_author = $("#book-select-author").val();
+  let book_category = $("#book-select-category").val();
+  let book_publisher = $("#book-select-publisher").val();
 
-function sendDeleteBook(id) {}
+  //
+  let book = {
+    img: book_img,
+    name: book_name,
+    oldPrice: book_oldPrice,
+    newPrice: book_newPrice,
+    year: book_year,
+    authorId: book_author,
+    categoryId: book_category,
+    publisherId: book_publisher,
+  };
+
+  // get token
+  let authorization = localStorage.getItem("authorization");
+
+  // call API
+  let url = API_URI + "/book/create";
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: JSON.stringify(book),
+    contentType: "application/json",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", authorization);
+    },
+    success: function (data, textStatus, xhr) {
+      // close create modal
+      $(".cancel").click();
+      getBooksFromAPI();
+    },
+    error(jqXHR, textStatus, errorThrown) {
+      // alert("Lỗi xác thực");
+      getAuthorFromAPI();
+    },
+  });
+}
+
+function sendDeleteBook(id) {
+  // get token
+  let authorization = localStorage.getItem("authorization");
+
+  // call API
+  let url = API_URI + "/book/delete/" + id;
+  $.ajax({
+    url: url,
+    type: "DELETE",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Authorization", authorization);
+    },
+    success: function (data, textStatus, xhr) {
+      getBooksFromAPI();
+    },
+    error(jqXHR, textStatus, errorThrown) {
+      // console.log(jqXHR);
+      // console.log(textStatus);
+      // console.log(errorThrown);
+      if (jqXHR.readyState == 4) {
+        getBooksFromAPI();
+      }
+    },
+  });
+}
 
 /// display data
 function showListBook() {

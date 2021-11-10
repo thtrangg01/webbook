@@ -90,7 +90,7 @@ function handleRegisterClick() {
     url: url,
     type: "POST",
     data: JSON.stringify(registerForm),
-    contentType: "aplication/json",
+    contentType: "application/json",
     success: function (data, textStatus, xhr) {
       console.log(data);
       user = data;
