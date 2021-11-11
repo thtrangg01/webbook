@@ -78,6 +78,7 @@
                   <ul class="list-inline header-top pull-right">
                     <li class="hidden-xs">
                       <a
+                        id="btn-add-book"
                         href="#"
                         class="add-project"
                         data-toggle="modal"
@@ -200,12 +201,22 @@
             </select>
           </div>
           <div class="modal-footer">
-            <button type="button" class="cancel" data-dismiss="modal">
+            <button type="button" class="btn btn-info" data-dismiss="modal">
               Thoát
             </button>
+
             <button
               type="button"
-              class="add-project"
+              class="btn btn-success"
+              data-dismiss="modal"
+              onclick="sendUpdateBook()"
+            >
+              Cập nhật
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-primary"
               id="add-book"
               data-dismiss="modal"
             >
